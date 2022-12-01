@@ -1,4 +1,4 @@
-// Package main contains the resolutions of the problems of the day 1 of 2022
+// Package main contains the resolutions of the problems of the day 1 of 2015
 package main
 
 import (
