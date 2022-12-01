@@ -10,13 +10,34 @@ import (
 var input string
 
 func puzzle1() int {
+	floor := 0
+
+	for _, character := range input {
+		if character == '(' {
+			floor++
+		} else if character == ')' {
+			floor--
+		}
+	}
+
+	return floor
+}
+
+func puzzle2() int {
+	floor := 0
 	position := 0
 
 	for _, character := range input {
 		if character == '(' {
-			position++
+			floor++
 		} else if character == ')' {
-			position--
+			floor--
+		}
+
+		position++
+
+		if floor < 0 {
+			break
 		}
 	}
 
@@ -25,4 +46,5 @@ func puzzle1() int {
 
 func main() {
 	fmt.Println(puzzle1())
+	fmt.Println(puzzle2())
 }
