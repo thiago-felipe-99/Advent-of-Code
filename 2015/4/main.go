@@ -25,6 +25,24 @@ func puzzle1() int {
 	return count
 }
 
+func puzzle2() int {
+	count := 0
+
+	for {
+		data := fmt.Sprintf("%v%d", input, count)
+		checksum := fmt.Sprintf("%x", md5.Sum([]byte(data)))
+
+		if checksum[0:6] == "000000" {
+			break
+		}
+
+		count++
+	}
+
+	return count
+}
+
 func main() {
 	fmt.Println(puzzle1())
+	fmt.Println(puzzle2())
 }
