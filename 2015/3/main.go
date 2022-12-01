@@ -1,4 +1,4 @@
-// Package main contains the resolutions of the problems of the day 2 of 2015
+// Package main contains the resolutions of the problems of the day 3 of 2015
 package main
 
 import (
