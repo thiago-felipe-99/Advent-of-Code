@@ -54,6 +54,46 @@ func puzzle1() int {
 	return sumTotalPaper
 }
 
+func puzzle2() int {
+	scanner := bufio.NewScanner(strings.NewReader(input))
+	dimensions := [3]int{0, 0, 0}
+	sumTotalRibbon := 0
+
+	for scanner.Scan() {
+		values := strings.Split(scanner.Text(), "x")
+		for index := range dimensions {
+			dimension, err := strconv.Atoi(values[index])
+			if err != nil {
+				panic(err)
+			}
+
+			dimensions[index] = dimension
+		}
+
+		sumRibbon := dimensions[0] * dimensions[1] * dimensions[2]
+
+		//nolint: nestif,gomnd
+		if dimensions[0] < dimensions[1] {
+			if dimensions[1] < dimensions[2] {
+				sumRibbon += 2*dimensions[0] + 2*dimensions[1]
+			} else {
+				sumRibbon += 2*dimensions[0] + 2*dimensions[2]
+			}
+		} else {
+			if dimensions[0] < dimensions[2] {
+				sumRibbon += 2*dimensions[1] + 2*dimensions[0]
+			} else {
+				sumRibbon += 2*dimensions[1] + 2*dimensions[2]
+			}
+		}
+
+		sumTotalRibbon += sumRibbon
+	}
+
+	return sumTotalRibbon
+}
+
 func main() {
 	fmt.Println(puzzle1())
+	fmt.Println(puzzle2())
 }
